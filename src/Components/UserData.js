@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import Table from "./Table";
 
@@ -89,8 +88,7 @@ const UserData = () => {
 
   return (
     <div className="flex">
-
-      <form handleSubmit={handleSubmit}/>
+      <form handleSubmit={handleSubmit} />
       <div className="max-w-lg mx-auto mt-5 flex bg-slate-400 p-5 w-a rounded-2xl">
         <form onSubmit={handleSubmit} className="mb-4">
           <h2 className="m-2 p-3 font-bold font from-neutral-950">USER FORM</h2>
@@ -206,64 +204,12 @@ const UserData = () => {
         </div>
       </div>
 
-
-
-
-
-
-      
       <div className=" mx-auto mt-5">
-
-        <Table filteredData={filteredData} handleEdit={handleEdit} handleDelete={handleDelete}  />
-        {/* <table className="border-collapse border border-gray-400">
-          <thead>
-            <tr>
-              <th className="border border-gray-400 px-4 py-2">ID</th>
-              <th className="border border-gray-400 px-4 py-2">Name</th>
-              <th className="border border-gray-400 px-4 py-2">
-                Date of Birth
-              </th>
-              <th className="border border-gray-400 px-4 py-2">Email</th>
-              <th className="border border-gray-400 px-4 py-2">Salary</th>
-              <th className="border border-gray-400 px-4 py-2">Gender</th>
-              <th className="border border-gray-400 px-4 py-2">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {filteredData.map((user, index) => (
-              <tr key={user.id}>
-                <td className="border border-gray-400 px-4 py-2">{user.id}</td>
-                <td className="border border-gray-400 px-4 py-2">
-                  {user.name}
-                </td>
-                <td className="border border-gray-400 px-4 py-2">{user.dob}</td>
-                <td className="border border-gray-400 px-4 py-2">
-                  {user.email}
-                </td>
-                <td className="border border-gray-400 px-4 py-2">
-                  {user.salary}
-                </td>
-                <td className="border border-gray-400 px-4 py-2">
-                  {user.gender}
-                </td>
-                <td className="border border-gray-400 px-4 py-2">
-                  <button
-                    onClick={() => handleEdit(index)}
-                    className="bg-green-500 text-white px-2 py-1 mr-2"
-                  >
-                    Edit
-                  </button>
-                  <button
-                    onClick={() => handleDelete(index)}
-                    className="bg-red-500 text-white px-2 py-1"
-                  >
-                    Delete
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table> */}
+        <Table
+          filteredData={filteredData}
+          handleEdit={handleEdit}
+          handleDelete={handleDelete}
+        />
       </div>
     </div>
   );
