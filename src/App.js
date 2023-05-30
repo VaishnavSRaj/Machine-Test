@@ -1,11 +1,12 @@
 
 import './App.css';
+import UserData from './Components/UserData';
 
-import UserRecord from './Components/UserRecord';
+
 
 function App() {
   return (
-  <UserRecord/>
+  <UserData/>
   );
 }
 

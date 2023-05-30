@@ -1,6 +1,8 @@
-import React, { useState } from "react";
 
-const UserRecord = () => {
+import React, { useState } from "react";
+import Table from "./Table";
+
+const UserData = () => {
   const [users, setUsers] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [searchTxt, setSearchTxt] = useState([]);
@@ -12,6 +14,7 @@ const UserRecord = () => {
   const [gender, setGender] = useState("male");
   const [isEmpty, setIsEmpty] = useState(true);
   const [isEmailVaild, setEmailValid] = useState(true);
+  const [buttonName, setButtonName] = useState("Create");
 
   // Search
   function filterData(searchTxt, users) {
@@ -22,6 +25,7 @@ const UserRecord = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setButtonName("Create");
 
     // Validation
     if (!id || !name || !dob || !email || !salary) {
@@ -60,6 +64,9 @@ const UserRecord = () => {
   };
 
   const handleEdit = (index) => {
+    setButtonName("Update");
+
+    console.log(index);
     const userToEdit = users[index];
 
     setId(userToEdit.id);
@@ -82,9 +89,11 @@ const UserRecord = () => {
 
   return (
     <div className="flex">
+
+      <form handleSubmit={handleSubmit}/>
       <div className="max-w-lg mx-auto mt-5 flex bg-slate-400 p-5 w-a rounded-2xl">
         <form onSubmit={handleSubmit} className="mb-4">
-          <h2 className="m-2 p-3 from-neutral-950">USER FORM</h2>
+          <h2 className="m-2 p-3 font-bold font from-neutral-950">USER FORM</h2>
           <div className="p-2">
             <label For="id">ID:</label>
             <input
@@ -171,7 +180,7 @@ const UserRecord = () => {
             type="submit"
             className="font-poppins bg-purple-600 text-white hover:bg-black p-2 rounded-lg px-4 py-2 mt-2"
           >
-            Create
+            {buttonName}
           </button>
         </form>
 
@@ -190,16 +199,23 @@ const UserRecord = () => {
               const Data = filterData(searchTxt, users);
 
               setFilteredData(Data);
-              {
-              }
             }}
           >
             Search
           </button>
         </div>
       </div>
+
+
+
+
+
+
+      
       <div className=" mx-auto mt-5">
-        <table className="border-collapse border border-gray-400">
+
+        <Table filteredData={filteredData} handleEdit={handleEdit} handleDelete={handleDelete}  />
+        {/* <table className="border-collapse border border-gray-400">
           <thead>
             <tr>
               <th className="border border-gray-400 px-4 py-2">ID</th>
@@ -247,9 +263,9 @@ const UserRecord = () => {
               </tr>
             ))}
           </tbody>
-        </table>
+        </table> */}
       </div>
     </div>
   );
 };
-export default UserRecord;
+export default UserData;
